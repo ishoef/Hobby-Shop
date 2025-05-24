@@ -6,8 +6,8 @@ import { Link } from "react-router";
 
 const HowItWorks = () => {
   return (
-    <div className="">
-      <div className="bg-base-100 w-11/12 md:w-10/12 mx-auto py-10 rounded-2xl border border-[#ff6b3590] mb-10">
+    <div className="mt-10 md:mt-20 mb-10">
+      <div className="bg-base-100 w-11/12 md:w-10/12 mx-auto py-10 rounded-2xl border border-[#ff6b3590]">
         <h1 className="title text-center border-b pb-5 mx-20">How it Works</h1>
         <div className="flex justify-evenly flex-wrap gap-5 items-center my-10 md:p-10">
           <Link to="/creategroup">
