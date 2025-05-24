@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
 
 const CreateGroupForm = ({ user }) => {
   const [formData, setFormData] = useState({
@@ -21,6 +22,12 @@ const CreateGroupForm = ({ user }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData); // 👈 Just logs formData
+    alert('ok done')
+    Swal.fire({
+      title: "Congratulations!",
+      icon: "success",
+      draggable: true,
+    });
   };
 
   return (
