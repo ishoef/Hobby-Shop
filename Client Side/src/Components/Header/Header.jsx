@@ -153,40 +153,42 @@ const Header = () => {
                 <li>
                   {" "}
                   <NavLink
-                    to="/demopage"
+                    to="/allgroups"
                     className={({ isActive }) =>
                       isActive
                         ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
                         : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
                     }
                   >
-                    DemoPage
+                    All Groups
                   </NavLink>{" "}
                 </li>
                 <li>
                   {" "}
                   <NavLink
-                    to="/demopage2"
+                    // to={user ? "/creategroup" : "/auth/login"}
+                    to="/creategroup"
                     className={({ isActive }) =>
                       isActive
                         ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
                         : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
                     }
                   >
-                    DemoPage2
+                    Create Group
                   </NavLink>{" "}
                 </li>
                 <li>
                   {" "}
                   <NavLink
-                    to={user ? "/myprofile" : "/auth/login"}
+                    // to={user ? "/mygroups" : "/auth/login"}
+                    to="/mygroups"
                     className={({ isActive }) =>
                       isActive
                         ? "border-b-2 bg-base-300 text-primary px-4 pb-2 pt-1 rounded"
                         : "bg-none px-4 pb-2 pt-1 rounded hover:text-primary"
                     }
                   >
-                    My Profile
+                    My Groups
                   </NavLink>{" "}
                 </li>
                 <li>

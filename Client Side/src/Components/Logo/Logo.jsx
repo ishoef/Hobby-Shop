@@ -7,7 +7,7 @@ const Logo = () => {
         <div className="left flex items-center gap-2">
           <img className="w-9" src="https://i.ibb.co/QxPKXTh/logo.png" alt="" />
           <p className="hidden md:block lg:block text-2xl font-bold tracking-wide">
-            Logo
+            Hobby <span className='text-primary'>Shop</span>
           </p>
         </div>
       </Link>

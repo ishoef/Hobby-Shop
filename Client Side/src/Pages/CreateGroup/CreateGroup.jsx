@@ -7,7 +7,7 @@ const CreateGroup = () => {
     const { user } = use(AuthContext);
 
     return (
-        <div className='py-20'>
+        <div className='py-10 md:py-20 w-11/12 md:w-10/12  mx-auto'>
             <CreateGroupForm user={user}></CreateGroupForm>
         </div>
     );

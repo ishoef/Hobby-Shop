@@ -23,23 +23,23 @@ const GroupCard = () => {
           </div>
           <div className="mb-2">
             <p className="flex items-center gap-2">
-              <MdOutlineCreate />
+              <MdOutlineCreate color="#FF6B35" />
               Group Creator
             </p>
             <p className="flex items-center gap-2">
               {" "}
-              <MdDateRange />
+              <MdDateRange color="#FF6B35" />
               Current Date
             </p>
           </div>
           <div className="flex justify-between">
             <p className="flex items-center gap-2">
               {" "}
-              <HiUsers />
+              <HiUsers color="#FF6B35" />
               All Member
             </p>
             <p className="flex items-center gap-2">
-              <ImLocation />
+              <ImLocation color="#FF6B35" />
               Location
             </p>
           </div>

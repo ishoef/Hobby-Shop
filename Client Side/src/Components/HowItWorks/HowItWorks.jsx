@@ -46,7 +46,7 @@ const HowItWorks = () => {
                 <GiThreeFriends color="#ff6b35" size={64} />
               </div>
               <p className="text-2xl font-semibold hover:text-primary cursor-pointer">
-                Meet Up
+                Chill Borroh
               </p>
             </div>
           </Link>

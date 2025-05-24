@@ -1,9 +1,11 @@
 import React from 'react';
+import CreateGroup from '../CreateGroup/CreateGroup';
+import CreatedGroups from '../../Components/CreatedGroups/CreatedGroups';
 
 const MyGroupes = () => {
     return (
         <div>
-            this is the my groups page
+            <CreatedGroups></CreatedGroups>
         </div>
     );
 };
