@@ -1,0 +1,70 @@
+import React from "react";
+import { IoCreateOutline } from "react-icons/io5";
+import { MdDelete } from "react-icons/md";
+import { Link } from "react-router";
+import Swal from "sweetalert2";
+
+const GroupTableRow = ({ group }) => {
+  const handleDelete = () => {
+    console.log(`Deleting group with ID: ${group._id}`);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Send delete request to the server
+        fetch(`http://localhost:3000/groups/${group._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Delete response:", data);
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your group has been deleted.", "success");
+              window.location.reload(); // Reload the page to reflect changes
+            } else {
+              Swal.fire("Error!", "Failed to delete the group.", "error");
+            }
+          });
+      }
+    });
+  };
+
+  return (
+    <tr>
+      <td>
+        <img
+          src={group.image}
+          alt={group.groupName}
+          className="w-16 h-16 rounded-full"
+        />
+      </td>
+      <Link to={`/mygroups/${group._id}`}>
+        <td>{group.groupName}</td>
+      </Link>
+      <td>{group.category}</td>
+      <td>{group.maxMembers}</td>
+      <td>{group.location}</td>
+      <td>{group.startDate}</td>
+      <td className="space-y-3">
+        <Link className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded">
+          <IoCreateOutline color="white" />
+        </Link>
+        <button
+          onClick={() => handleDelete(group._id)}
+          type="button"
+          className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
+        >
+          <MdDelete color="white" />
+        </button>
+      </td>
+    </tr>
+  );
+};
+
+export default GroupTableRow;

@@ -10,6 +10,7 @@ import CreateGroup from "../Pages/CreateGroup/CreateGroup";
 import AllGroups from "../Pages/AllGroups/AllGroups";
 import MyGroupes from "../Pages/MyGroupes/MyGroupes";
 import MyProfile from "../Pages/MyProfile/MyProfile";
+import GroupDetails from "../Components/GroupDetails/GroupDetails";
 
 export const router = createBrowserRouter([
   {
@@ -36,11 +37,21 @@ export const router = createBrowserRouter([
       },
       {
         path: "/mygroups",
+        loader: () => {
+          return fetch("http://localhost:3000/groups");
+        },
         element: (
           <PrivateRoute>
             <MyGroupes></MyGroupes>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/mygroups/:id",
+        Component: GroupDetails,
+        loader: () => {
+          return fetch("http://localhost:3000/groups");
+        }
       },
       {
         path: "/myprofile",

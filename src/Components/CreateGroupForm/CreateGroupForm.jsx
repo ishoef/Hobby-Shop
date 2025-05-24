@@ -42,6 +42,7 @@ const CreateGroupForm = ({ user }) => {
 
         // reset the form
         form.reset();
+        
         // show success alert
         Swal.fire("Success!", "Group created successfully.", "success");
         navigate("/mygroups", { state: data });
