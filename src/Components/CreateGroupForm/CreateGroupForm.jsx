@@ -1,33 +1,55 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const CreateGroupForm = ({ user }) => {
-  const [formData, setFormData] = useState({
-    groupName: "",
-    category: "",
-    description: "",
-    location: "",
-    maxMembers: "",
-    startDate: "",
-    imageUrl: "",
-    userName: user?.displayName || "",
-    userEmail: user?.email || "",
-  });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData); // 👈 Just logs formData
-    alert('ok done')
-    Swal.fire({
-      title: "Congratulations!",
-      icon: "success",
-      draggable: true,
-    });
+
+    // values from form inputs
+    const form = e.target;
+    const formData = {
+      groupName: form.groupName.value,
+      category: form.category.value,
+      description: form.description.value,
+      location: form.location.value,
+      maxMembers: form.maxMembers.value,
+      startDate: form.startDate.value,
+      imageUrl: form.imageUrl.value,
+      userName: user?.displayName || "",
+      userEmail: user?.email || "",
+    };
+
+    const newGroup = formData;
+
+    console.log(formData);
+
+
+    // send data to the server
+    fetch("http://localhost:3000/groups", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newGroup),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data after Post", data);
+
+        // reset the form
+        form.reset();
+        // show success alert
+        Swal.fire("Success!", "Group created successfully.", "success");
+        navigate("/mygroups", { state: data });
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        Swal.fire("Error", "Failed to create group.", "error");
+      });
   };
 
   return (
@@ -43,18 +65,15 @@ const CreateGroupForm = ({ user }) => {
         type="text"
         name="groupName"
         placeholder="Group Name"
-        value={formData.groupName}
-        onChange={handleChange}
         className="input input-bordered focus:border-primary focus:outline-primary w-full "
         required
       />
 
       <select
         name="category"
-        value={formData.category}
-        onChange={handleChange}
         className="select select-bordered w-full focus:border-primary focus:outline-primary"
         required
+        defaultValue=""
       >
         <option value="" disabled>
           Select Hobby Category
@@ -66,14 +85,12 @@ const CreateGroupForm = ({ user }) => {
         <option value="Writing">Writing</option>
         <option value="Video Gaming">Video Gaming</option>
         <option value="Hiking">Hiking</option>
-        <option value="Hiking">Coding</option>
+        <option value="Coding">Coding</option>
       </select>
 
       <textarea
         name="description"
         placeholder="Description"
-        value={formData.description}
-        onChange={handleChange}
         className="textarea textarea-bordered w-full focus:border-primary focus:outline-primary"
         rows="4"
         required
@@ -83,8 +100,6 @@ const CreateGroupForm = ({ user }) => {
         type="text"
         name="location"
         placeholder="Meeting Location"
-        value={formData.location}
-        onChange={handleChange}
         className="input input-bordered w-full focus:border-primary focus:outline-primary"
         required
       />
@@ -93,8 +108,6 @@ const CreateGroupForm = ({ user }) => {
         type="number"
         name="maxMembers"
         placeholder="Max Members"
-        value={formData.maxMembers}
-        onChange={handleChange}
         className="input input-bordered w-full focus:border-primary focus:outline-primary"
         required
       />
@@ -102,8 +115,6 @@ const CreateGroupForm = ({ user }) => {
       <input
         type="date"
         name="startDate"
-        value={formData.startDate}
-        onChange={handleChange}
         className="input input-bordered w-full focus:border-primary focus:outline-primary"
         required
       />
@@ -112,8 +123,6 @@ const CreateGroupForm = ({ user }) => {
         type="url"
         name="imageUrl"
         placeholder="Image URL"
-        value={formData.imageUrl}
-        onChange={handleChange}
         className="input input-bordered w-full focus:border-primary focus:outline-primary"
         required
       />
@@ -121,7 +130,7 @@ const CreateGroupForm = ({ user }) => {
       <input
         type="text"
         name="userName"
-        value={formData.userName}
+        value={user?.displayName || ""}
         readOnly
         className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-primary"
       />
@@ -129,7 +138,7 @@ const CreateGroupForm = ({ user }) => {
       <input
         type="email"
         name="userEmail"
-        value={formData.userEmail}
+        value={user?.email || ""}
         readOnly
         className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-primary"
       />

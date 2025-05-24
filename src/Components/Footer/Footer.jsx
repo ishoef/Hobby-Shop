@@ -15,17 +15,17 @@ const Footer = () => {
           <ul className="flex gap-4 mt-5">
             <Link to="https://www.facebook.com/profile.php" target="_blank">
               <li>
-                <FaFacebook color="#422AD5" size={22} />
+                <FaFacebook color="#FF6B35" size={22} />
               </li>
             </Link>
             <Link to="https://github.com/" target="_blank">
               <li>
-                <FaGithub color="#422AD5" size={22} />
+                <FaGithub color="#FF6B35" size={22} />
               </li>
             </Link>
             <Link to="https://www.linkedin.com/" target="_blank">
               <li>
-                <FaLinkedin color="#422AD5" size={22} />
+                <FaLinkedin color="#FF6B35" size={22} />
               </li>
             </Link>
           </ul>
