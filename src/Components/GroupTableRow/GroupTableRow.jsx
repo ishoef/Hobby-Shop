@@ -44,15 +44,19 @@ const GroupTableRow = ({ group }) => {
           className="w-26 h-18 "
         />
       </td>
-      <td><Link to={`/mygroups/${group._id}`}>
-        {group.groupName}
-      </Link></td>
+      <td>
+        <Link to={`/mygroups/${group._id}`}>{group.groupName}</Link>
+      </td>
       <td>{group.category}</td>
       <td>{group.maxMembers}</td>
       <td>{group.location}</td>
       <td>{group.startDate}</td>
       <td className="space-y-3">
-        <Link className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded">
+        <Link
+          to={`/mygroups/update/${group._id}`}
+          type="button"
+          className="hover:scale-102 hover:shadow cursor-pointer bg-primary w-fit flex items-center justify-center p-2 rounded"
+        >
           <IoCreateOutline color="white" />
         </Link>
         <button

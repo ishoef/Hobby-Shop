@@ -11,6 +11,7 @@ import AllGroups from "../Pages/AllGroups/AllGroups";
 import MyGroupes from "../Pages/MyGroupes/MyGroupes";
 import MyProfile from "../Pages/MyProfile/MyProfile";
 import GroupDetails from "../Components/GroupDetails/GroupDetails";
+import UpdateGroupData from "../Components/UpdateGroupData/UpdateGroupData";
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,13 @@ export const router = createBrowserRouter([
         Component: GroupDetails,
         loader: () => {
           return fetch("http://localhost:3000/groups");
+        }
+      },
+      {
+        path: "/mygroups/update/:id",
+        Component: UpdateGroupData,
+        loader: ({ params }) => {
+          return fetch(`http://localhost:3000/groups/${params.id}`);
         }
       },
       {
