@@ -25,27 +25,31 @@ const GroupDetails = () => {
     imageUrl,
   } = group;
 
-    console.log("Group ID:", id);
-    const navigate = useNavigate();
-     
-    // Function to handle joining the group
-    const handleJoin = () => {
-        console.log(`Joining group with ID: ${_id}`);
-        Swal.fire({
-            title: "Join Group",
-            text: "Are you sure you want to join this group?",
-            icon: "question",
-            showCancelButton: true,
-            confirmButtonText: "Yes, join it!",
-            cancelButtonText: "No, cancel",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Here you can add the logic to handle joining the group
-                Swal.fire("Joined!", "You have successfully joined the group.", "success");
-            }
-            navigate("/mygroups"); // Redirect to My Groups page after joining
-        });
-    }
+  console.log("Group ID:", id);
+
+  // Function to handle joining the group
+  const handleJoin = () => {
+    console.log(`Joining group with ID: ${_id}`);
+    Swal.fire({
+      title: "Join Group",
+      text: "Are you sure you want to join this group?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "Yes, join it!",
+      cancelButtonText: "No, cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Here you can add the logic to handle joining the group
+        Swal.fire(
+          "Joined!",
+          "You have successfully joined the group.",
+          "success"
+        );
+      } else if (result.isDismissed) {
+        Swal.fire("Cancelled", "You have not joined the group.", "info");
+      }
+    });
+  };
   return (
     <div className="w-11/12 md:w-10/12 mx-auto py-10">
       <div className="w-200 mx-auto">

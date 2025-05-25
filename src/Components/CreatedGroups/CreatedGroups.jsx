@@ -11,7 +11,7 @@ const CreatedGroups = ({groupsData}) => {
   return (
     <div className="w-11/12 md:w-10/12 mx-auto py-10">
       <h1 className="title text-center">My Groups</h1>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto min-h-[calc(100vh-438px)]">
         <table className="table table-lg border border-[#FF6B3580] rounded-2xl">
           <thead>
             <tr className="bg-primary text-white text-[18px]">

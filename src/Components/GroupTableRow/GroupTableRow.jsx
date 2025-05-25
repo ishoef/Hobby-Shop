@@ -9,7 +9,7 @@ const GroupTableRow = ({ group }) => {
     console.log(`Deleting group with ID: ${group._id}`);
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "You want to delete this!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -39,14 +39,14 @@ const GroupTableRow = ({ group }) => {
     <tr>
       <td>
         <img
-          src={group.image}
+          src={group.imageUrl}
           alt={group.groupName}
-          className="w-16 h-16 rounded-full"
+          className="w-26 h-18 "
         />
       </td>
-      <Link to={`/mygroups/${group._id}`}>
-        <td>{group.groupName}</td>
-      </Link>
+      <td><Link to={`/mygroups/${group._id}`}>
+        {group.groupName}
+      </Link></td>
       <td>{group.category}</td>
       <td>{group.maxMembers}</td>
       <td>{group.location}</td>
