@@ -10,6 +10,13 @@ const UpdateGroupData = () => {
   console.log("groupId", groupId);
   console.log(groupData);
 
+
+  // Set the document title
+  React.useEffect(() => {   
+    document.title = "Update Group | Hobby Shop";
+  }, []);
+
+  
   const handleUpdateGroup = (e) => {
     e.preventDefault();
     const form = e.target;

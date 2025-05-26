@@ -4,7 +4,10 @@ import { MdDelete } from "react-icons/md";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
 
-const GroupTableRow = ({ group }) => {
+const GroupTableRow = ({ group, groups, setGroups }) => {
+
+
+  // This function will be called when the delete button is clicked
   const handleDelete = () => {
     console.log(`Deleting group with ID: ${group._id}`);
     Swal.fire({
@@ -26,7 +29,10 @@ const GroupTableRow = ({ group }) => {
             console.log("Delete response:", data);
             if (data.deletedCount > 0) {
               Swal.fire("Deleted!", "Your group has been deleted.", "success");
-              window.location.reload(); // Reload the page to reflect changes
+              // window.location.reload(); // Reload the page to reflect changes
+
+              const updatedgroups = groups.filter(groupItem => groupItem._id !== group._id);
+              setGroups(updatedgroups)
             } else {
               Swal.fire("Error!", "Failed to delete the group.", "error");
             }
@@ -45,7 +51,7 @@ const GroupTableRow = ({ group }) => {
         />
       </td>
       <td>
-        <Link to={`/mygroups/${group._id}`}>{group.groupName}</Link>
+        <Link to={`/groupDetails/${group._id}`}>{group.groupName}</Link>
       </td>
       <td>{group.category}</td>
       <td>{group.maxMembers}</td>

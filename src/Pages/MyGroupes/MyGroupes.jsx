@@ -1,24 +1,45 @@
-import React, { useEffect } from 'react';
-import CreateGroup from '../CreateGroup/CreateGroup';
-import CreatedGroups from '../../Components/CreatedGroups/CreatedGroups';
-import NoCreatedGroups from '../../Components/NoCreatedGroups/NoCreatedGroups';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState, useContext } from "react";
+import CreatedGroups from "../../Components/CreatedGroups/CreatedGroups";
+import NoCreatedGroups from "../../Components/NoCreatedGroups/NoCreatedGroups";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const MyGroupes = () => {
-    useEffect(() => {
-      document.title = "My Groups | Hobby Shop";
-    }, []);
+  const { user } = useContext(AuthContext);
+  const [groups, setGroups] = useState([]);
 
-    const groupsData = useLoaderData();
+  useEffect(() => {
+    document.title = "My Groups | Hobby Shop";
+  }, []);
 
-    if (!groupsData || groupsData.length === 0) {
-        return <NoCreatedGroups></NoCreatedGroups>;
+  useEffect(() => {
+    if (user && user.email) {
+      fetch(`http://localhost:3000/groups?userEmail=${user.email}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setGroups(data);
+          
+        })
+        .catch((err) => {
+          console.error("Failed to fetch user groups:", err);
+          setGroups([]);
+          
+        });
+    } else {
+      // If user not ready yet, keep loading or handle it here
+        setGroups([]);
     }
-    return (
-        <div>
-            <CreatedGroups groupsData={groupsData}></CreatedGroups>
-        </div>
-    );
+  }, [user]);
+
+
+  if (!groups || groups.length === 0) {
+    return <NoCreatedGroups />;
+  }
+
+  return (
+    <div>
+      <CreatedGroups groups={groups} setGroups={setGroups} />
+    </div>
+  );
 };
 
 export default MyGroupes;

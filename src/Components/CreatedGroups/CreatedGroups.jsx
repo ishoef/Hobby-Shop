@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import GroupTableRow from "../GroupTableRow/GroupTableRow";
 
-const CreatedGroups = ({groupsData}) => {
+const CreatedGroups = ({ groups, setGroups }) => {
   useEffect(() => {
-    document.title = "Error | Hobby Shop";
+    document.title = "My Groups | Hobby Shop";
   }, []);
- 
-  console.log(groupsData);
 
   return (
     <div className="w-11/12 md:w-10/12 mx-auto py-10">
@@ -25,8 +23,13 @@ const CreatedGroups = ({groupsData}) => {
             </tr>
           </thead>
           <tbody>
-            {groupsData.map((group) => (
-                <GroupTableRow key={group._id} group={group} ></GroupTableRow>
+            {groups.map((group) => (
+              <GroupTableRow
+                groups={groups}
+                setGroups={setGroups}
+                key={group._id}
+                group={group}
+              ></GroupTableRow>
             ))}
           </tbody>
         </table>

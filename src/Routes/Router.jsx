@@ -22,6 +22,9 @@ export const router = createBrowserRouter([
       {
         path: "/",
         index: true,
+        loader: () => {
+          return fetch("http://localhost:3000/groups");
+        },
         Component: Home,
       },
       {
@@ -34,6 +37,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allgroups",
+        loader: () => {
+          return fetch("http://localhost:3000/groups");
+        },
         Component: AllGroups,
       },
       {
@@ -48,7 +54,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/mygroups/:id",
+        path: "/groupDetails/:id",
         Component: GroupDetails,
         loader: () => {
           return fetch("http://localhost:3000/groups");

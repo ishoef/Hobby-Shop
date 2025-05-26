@@ -4,7 +4,7 @@ import { PiMaskHappyFill } from "react-icons/pi";
 
 const NoCreatedGroups = () => {
     useEffect(() => {
-        document.title = "Error | Hobby Shop";
+        document.title = "Go to Create Group | Hobby Shop";
       }, []);
   return (
     <div className="">

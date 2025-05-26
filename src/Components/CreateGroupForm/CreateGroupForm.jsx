@@ -4,6 +4,10 @@ import Swal from "sweetalert2";
 
 const CreateGroupForm = ({ user }) => {
 
+  // Set the document title
+  React.useEffect(() => {
+    document.title = "Create Group | Hobby Shop";
+  }, []);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { TiThMenu } from "react-icons/ti";
 import { AuthContext } from "../../Context/AuthProvider";
 import Logo from "../Logo/Logo";
+import { CiDark } from "react-icons/ci";
 
 const Header = () => {
   const { user, logOut } = use(AuthContext);
@@ -128,6 +129,21 @@ const Header = () => {
               </Link>
             )}
 
+            {/* User Name Tooltip */}
+            {showTooltip && (
+              <div className="absolute right-2 top-16 lg:right-60 lg:top-[70px] bg-primary text-white text-sm px-4 py-5 rounded shadow-md z-10">
+                <p className="text-end text-xl">{user.displayName}</p>
+                <p>{user.email}</p>
+              </div>
+            )}
+
+            {/* Dark Mode Toggle */}
+
+            <div className="tooltip tooltip-bottom" data-tip="Dark Mode">
+              <button className="btn btn-ghost text-2xl"><CiDark /></button>
+                
+            </div>
+
             {/* Small Device Dropdown Menu */}
             <div className="dropdown dropdown-end lg:hidden">
               <div tabIndex={0} role="button" className="btn m-1">
@@ -205,12 +221,6 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {showTooltip && (
-          <div className="absolute right-2 top-16 lg:right-60 lg:top-[70px] bg-primary text-white text-sm px-4 py-5 rounded shadow-md z-10">
-            <p className="text-end text-xl">{user.displayName}</p>
-            <p>{user.email}</p>
-          </div>
-        )}
       </header>
     </>
   );

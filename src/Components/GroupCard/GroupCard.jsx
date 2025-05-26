@@ -2,49 +2,62 @@ import React from "react";
 import { HiUsers } from "react-icons/hi";
 import { ImLocation } from "react-icons/im";
 import { MdDateRange, MdOutlineCreate } from "react-icons/md";
+import { Link, useNavigate } from "react-router";
 
-const GroupCard = () => {
+const GroupCard = ({ group }) => {
+  
+  // If group data is passed, you can use it to display dynamic content
+  const { groupName, category, _id, userName, startDate, imageUrl, maxMembers, location } = group || {};
+
+  const navigate = useNavigate();
   return (
     <div>
       <div className="hover:scale-102 transition-all border border-gray-300 flex flex-col w-full rounded-xl shadow cursor-pointer pb-5">
         <div className="w-full">
           <img
             className="w-full rounded-t-xl h-40 md:h-50 lg:h-60"
-            src="https://images.unsplash.com/photo-1488998427799-e3362cec87c3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c3R1ZHl8ZW58MHx8MHx8fDA%3D"
-            alt=""
+            src={
+              imageUrl ||
+              "https://plus.unsplash.com/premium_photo-1669652639356-f5cb1a086976?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJvb2tzfGVufDB8fDB8fHww"
+            }
           />
         </div>
         <div className="w-full gap-4 px-6 py-5">
           <div className="w-full">
             <h1 className="font-semibold text-primary text-[18px]">
-              Group Name
+              {groupName || "Group Name"}
             </h1>
-            <p className="text-gray-400 mb-2">Category</p>
+            <p className="text-gray-400 mb-2"> {category || "Category"} </p>
           </div>
           <div className="mb-2">
             <p className="flex items-center gap-2">
               <MdOutlineCreate color="#FF6B35" />
-              Group Creator
+              {userName || "User Name"}
             </p>
             <p className="flex items-center gap-2">
               {" "}
               <MdDateRange color="#FF6B35" />
-              Current Date
+              {startDate || "Start Date"}
             </p>
           </div>
           <div className="flex justify-between">
             <p className="flex items-center gap-2">
               {" "}
               <HiUsers color="#FF6B35" />
-              All Member
+              {maxMembers || "0"} Members
             </p>
             <p className="flex items-center gap-2">
               <ImLocation color="#FF6B35" />
-              Location
+              {location || "Location"}
             </p>
           </div>
         </div>
-        <button className="btn btn-primary mx-6 text-[17px">See More</button>
+        <button
+          className="btn btn-primary mx-6 text-[17px]"
+          onClick={() => navigate(`/groupDetails/${_id}`)}
+        >
+          See More
+        </button>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ const Register = () => {
   const [showError, setShowError] = useState(null);
 
   useEffect(() => {
-    document.title = "App Godaun | Register";
+    document.title = "Register | Hobby Shop";
   }, []);
 
   const handleSubmit = (e) => {

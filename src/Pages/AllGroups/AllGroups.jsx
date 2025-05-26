@@ -1,15 +1,28 @@
-import React from 'react';
-import FeaturedGroups from '../../Components/FeaturedGroupes/FeaturedGroups';
+import React from "react";
+import FeaturedGroups from "../../Components/FeaturedGroupes/FeaturedGroups";
+import { useLoaderData } from "react-router";
 
 const AllGroups = () => {
-    return (
-      <div className="w-11/12 md:w-10/12 mx-auto mt-5 md:mt-20 mb-10">
-        <h1 className="title text-center">Explore All Groups</h1>
-        <div className='min-h-[calc(100vh-477px)]'>
-          <FeaturedGroups></FeaturedGroups>
-        </div>
+  // Set the document title
+  React.useEffect(() => {
+    document.title = "Explore Groups | Hobby Shop";
+  }, []);
+
+  // Fetch groups data from the server
+  const groupsData = useLoaderData();
+
+  // Render the component
+  return (
+    <div className="w-11/12 md:w-10/12 mx-auto mt-5 md:mt-20 mb-10">
+      <h1 className="title text-center">Explore All Groups</h1>
+      <div className="min-h-[calc(100vh-477px)]">
+        <FeaturedGroups
+          showSeeAll={false}
+          groupsData={groupsData}
+        ></FeaturedGroups>
       </div>
-    );
+    </div>
+  );
 };
 
 export default AllGroups;
