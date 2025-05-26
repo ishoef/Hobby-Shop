@@ -9,8 +9,8 @@ const Footer = () => {
         <aside>
           <Logo></Logo>
           <p>
-            Apps Godaun ltd.
-            <br />A Softwer Selling Company, Started October, 2015
+            Hobby Shop Ltd
+            <br /> Hobby Shop is a platform where you can create and join groups based on your interests and hobbies.   
           </p>
           <ul className="flex gap-4 mt-5">
             <Link to="https://www.facebook.com/profile.php" target="_blank">
