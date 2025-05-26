@@ -52,7 +52,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/groupDetails/:id",
-        Component: GroupDetails,
+        element: (
+          <PrivateRoute>
+            <GroupDetails></GroupDetails>
+          </PrivateRoute>
+        ),
         loader: () => {
           return fetch("https://hobby-shop-server-side.vercel.app/groups");
         },
