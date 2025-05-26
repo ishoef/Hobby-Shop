@@ -23,9 +23,7 @@ export const router = createBrowserRouter([
         path: "/",
         index: true,
         loader: () => {
-          return fetch(
-            "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups"
-          );
+          return fetch("https://hobby-shop-server-side.vercel.app/groups");
         },
         Component: Home,
       },
@@ -40,18 +38,14 @@ export const router = createBrowserRouter([
       {
         path: "/allgroups",
         loader: () => {
-          return fetch(
-            "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups"
-          );
+          return fetch("https://hobby-shop-server-side.vercel.app/groups");
         },
         Component: AllGroups,
       },
       {
         path: "/mygroups",
         loader: () => {
-          return fetch(
-            "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups"
-          );
+          return fetch("https://hobby-shop-server-side.vercel.app/groups");
         },
         element: (
           <PrivateRoute>
@@ -63,9 +57,7 @@ export const router = createBrowserRouter([
         path: "/groupDetails/:id",
         Component: GroupDetails,
         loader: () => {
-          return fetch(
-            "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups"
-          );
+          return fetch("https://hobby-shop-server-side.vercel.app/groups");
         },
       },
       {
@@ -73,7 +65,7 @@ export const router = createBrowserRouter([
         Component: UpdateGroupData,
         loader: ({ params }) => {
           return fetch(
-            `https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups/${params.id}`
+            `https://hobby-shop-server-side.vercel.app/groups/${params.id}`
           );
         },
       },

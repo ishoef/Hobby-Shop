@@ -33,16 +33,13 @@ const UpdateGroupData = () => {
     console.log("Updated Group Data:", updatedGroup);
 
     // Send updated data to the server
-    fetch(
-      `https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups/${groupData._id}`,
-      {
-        method: "PUT",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(updatedGroup),
-      }
-    )
+    fetch(`https://hobby-shop-server-side.vercel.app/groups/${groupData._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedGroup),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log("after update", data);

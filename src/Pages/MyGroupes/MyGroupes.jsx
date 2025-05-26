@@ -14,7 +14,7 @@ const MyGroupes = () => {
   useEffect(() => {
     if (user && user.email) {
       fetch(
-        `https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups?userEmail=${user.email}`
+        `https://hobby-shop-server-side.vercel.app/groups?userEmail=${user.email}`
       )
         .then((res) => res.json())
         .then((data) => {

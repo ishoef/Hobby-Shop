@@ -31,16 +31,13 @@ const CreateGroupForm = ({ user }) => {
     console.log(formData);
 
     // send data to the server
-    fetch(
-      "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(newGroup),
-      }
-    )
+    fetch("https://hobby-shop-server-side.vercel.app/groups", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newGroup),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log("data after Post", data);

@@ -19,12 +19,9 @@ const GroupTableRow = ({ group, groups, setGroups }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Send delete request to the server
-        fetch(
-          `https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups/${group._id}`,
-          {
-            method: "DELETE",
-          }
-        )
+        fetch(`https://hobby-shop-server-side.vercel.app/groups/${group._id}`, {
+          method: "DELETE",
+        })
           .then((res) => res.json())
           .then((data) => {
             console.log("Delete response:", data);
