@@ -10,13 +10,11 @@ const UpdateGroupData = () => {
   console.log("groupId", groupId);
   console.log(groupData);
 
-
   // Set the document title
-  React.useEffect(() => {   
+  React.useEffect(() => {
     document.title = "Update Group | Hobby Shop";
   }, []);
 
-  
   const handleUpdateGroup = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -35,13 +33,16 @@ const UpdateGroupData = () => {
     console.log("Updated Group Data:", updatedGroup);
 
     // Send updated data to the server
-    fetch(`http://localhost:3000/groups/${groupData._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedGroup),
-    })
+    fetch(
+      `https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups/${groupData._id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updatedGroup),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("after update", data);
@@ -79,13 +80,13 @@ const UpdateGroupData = () => {
           name="groupName"
           placeholder="Group Name"
           defaultValue={groupData.groupName || ""}
-          className="input input-bordered focus:border-primary focus:outline-primary w-full"
+          className="input input-bordered focus:border-primary focus:outline-none w-full"
           required
         />
 
         <select
           name="category"
-          className="select select-bordered w-full focus:border-primary focus:outline-primary"
+          className="select select-bordered w-full focus:border-primary focus:outline-none"
           required
           defaultValue={groupData.category || ""}
         >
@@ -106,7 +107,7 @@ const UpdateGroupData = () => {
           name="description"
           placeholder="Description"
           defaultValue={groupData.description || ""}
-          className="textarea textarea-bordered w-full focus:border-primary focus:outline-primary"
+          className="textarea textarea-bordered w-full focus:border-primary focus:outline-none"
           rows="4"
           required
         />
@@ -116,7 +117,7 @@ const UpdateGroupData = () => {
           name="location"
           placeholder="Meeting Location"
           defaultValue={groupData.location || ""}
-          className="input input-bordered w-full focus:border-primary focus:outline-primary"
+          className="input input-bordered w-full focus:border-primary focus:outline-none"
           required
         />
 
@@ -125,7 +126,7 @@ const UpdateGroupData = () => {
           name="maxMembers"
           placeholder="Max Members"
           defaultValue={groupData.maxMembers || ""}
-          className="input input-bordered w-full focus:border-primary focus:outline-primary"
+          className="input input-bordered w-full focus:border-primary focus:outline-none"
           required
         />
 
@@ -133,7 +134,7 @@ const UpdateGroupData = () => {
           type="date"
           name="startDate"
           defaultValue={groupData.startDate || ""}
-          className="input input-bordered w-full focus:border-primary focus:outline-primary"
+          className="input input-bordered w-full focus:border-primary focus:outline-none"
           required
         />
 
@@ -142,7 +143,7 @@ const UpdateGroupData = () => {
           name="imageUrl"
           placeholder="Image URL"
           defaultValue={groupData.imageUrl || ""}
-          className="input input-bordered w-full focus:border-primary focus:outline-primary"
+          className="input input-bordered w-full focus:border-primary focus:outline-none"
           required
         />
 
@@ -151,7 +152,7 @@ const UpdateGroupData = () => {
           name="userName"
           value={user?.displayName || ""}
           readOnly
-          className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-primary"
+          className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-none"
         />
 
         <input
@@ -159,7 +160,7 @@ const UpdateGroupData = () => {
           name="userEmail"
           value={user?.email || ""}
           readOnly
-          className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-primary"
+          className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-none"
         />
 
         <button

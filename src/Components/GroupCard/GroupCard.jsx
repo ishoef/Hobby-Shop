@@ -12,7 +12,7 @@ const GroupCard = ({ group }) => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="hover:scale-102 transition-all border border-gray-300 flex flex-col w-full rounded-xl shadow cursor-pointer pb-5">
+      <div className="hover:scale-102 transition-all dark:text-gray-400 border border-gray-300 dark:border-gray-500 flex flex-col w-full rounded-xl shadow cursor-pointer pb-5">
         <div className="w-full">
           <img
             className="w-full rounded-t-xl h-40 md:h-50 lg:h-60"
@@ -53,7 +53,7 @@ const GroupCard = ({ group }) => {
           </div>
         </div>
         <button
-          className="btn btn-primary mx-6 text-[17px]"
+          className="btn btn-primary mx-6 text-[17px] dark:text-gray-200 hover:bg-transparent hover:text-primary transition-all"
           onClick={() => navigate(`/groupDetails/${_id}`)}
         >
           See More

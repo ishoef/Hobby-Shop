@@ -89,7 +89,7 @@ const UserTestimonial = () => {
   };
 
   return (
-    <section className="py-12 md:py-22 bg-gray-50 relative">
+    <section className="py-12 md:py-22 dark:bg-gray-800 relative">
       <h2 className="text-3xl font-bold text-center text-[#FF6B35] mb-10">
         Members Talk
       </h2>
@@ -97,8 +97,8 @@ const UserTestimonial = () => {
         <Slider {...settings}>
           {testimonials.map((t) => (
             <div key={t.id} className="px-3">
-              <div className="bg-white p-6 rounded-xl shadow h-full flex flex-col justify-between">
-                <p className="text-gray-700 italic mb-4">“{t.message}”</p>
+              <div className="bg-white dark:bg-gray-700 p-6 rounded-xl shadow h-full flex flex-col justify-between">
+                <p className="text-gray-700 dark:text-white italic mb-4">“{t.message}”</p>
                 <span className="font-semibold text-[#FF6B35]">{t.name}</span>
               </div>
             </div>

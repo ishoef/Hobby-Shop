@@ -55,7 +55,7 @@ const GroupDetails = () => {
       <div className="w-200 mx-auto">
         <h1 className="title text-center">{`${groupName} Group Details`}</h1>
 
-        <div className="bg-white p-6 rounded-lg shadow-md">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
           <div>
             <img className="w-full" src={imageUrl} alt="" />
           </div>

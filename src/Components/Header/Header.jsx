@@ -5,6 +5,7 @@ import { TiThMenu } from "react-icons/ti";
 import { AuthContext } from "../../Context/AuthProvider";
 import Logo from "../Logo/Logo";
 import { CiDark } from "react-icons/ci";
+import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
 
 const Header = () => {
   const { user, logOut } = use(AuthContext);
@@ -94,6 +95,9 @@ const Header = () => {
           </div>
 
           <div className="flex gap-5 items-center">
+            {/* Dark Mode Toggle */}
+
+            <DarkModeToggle></DarkModeToggle>
             {user ? (
               <Link to="/myprofile">
                 <div
@@ -136,13 +140,6 @@ const Header = () => {
                 <p>{user.email}</p>
               </div>
             )}
-
-            {/* Dark Mode Toggle */}
-
-            <div className="tooltip tooltip-bottom" data-tip="Dark Mode">
-              <button className="btn btn-ghost text-2xl"><CiDark /></button>
-                
-            </div>
 
             {/* Small Device Dropdown Menu */}
             <div className="dropdown dropdown-end lg:hidden">

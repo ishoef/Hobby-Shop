@@ -11,8 +11,8 @@ const MyProfile = () => {
   }, []);
 
   return (
-    <div className="w-11/12 lg:w-6/12 mx-auto bg-primary rounded-2xl p-4 md:p-8 lg:p-20 text-center my-10">
-      <div className="border py-10 px-3  rounded-2xl border-white lg:w-11/12 mx-auto">
+    <div className="w-11/12 lg:w-6/12 mx-auto bg-primary dark:bg-gray-800 rounded-2xl p-4 md:p-8 lg:p-20 text-center my-10">
+      <div className="border py-10 px-3 rounded-2xl border-white lg:w-11/12 mx-auto">
         <div className="rounded-full border border-green-800 w-[80px] h-[80px] mx-auto">
           {!user ? (
             <CgProfile />

@@ -13,23 +13,22 @@ const MyGroupes = () => {
 
   useEffect(() => {
     if (user && user.email) {
-      fetch(`http://localhost:3000/groups?userEmail=${user.email}`)
+      fetch(
+        `https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups?userEmail=${user.email}`
+      )
         .then((res) => res.json())
         .then((data) => {
           setGroups(data);
-          
         })
         .catch((err) => {
           console.error("Failed to fetch user groups:", err);
           setGroups([]);
-          
         });
     } else {
       // If user not ready yet, keep loading or handle it here
-        setGroups([]);
+      setGroups([]);
     }
   }, [user]);
-
 
   if (!groups || groups.length === 0) {
     return <NoCreatedGroups />;

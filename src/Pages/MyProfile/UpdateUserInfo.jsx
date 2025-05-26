@@ -9,6 +9,11 @@ const UpdateUserInfo = () => {
   const [photoURL, setPhotoUrl] = useState(user?.photoURL || "");
 
   const handleUpdate = async () => {
+    if (!updateName.trim() && !photoURL.trim()) {
+      toast.error("Please fill at least one field (Name or Photo URL)");
+      return; // Stop execution here
+    }
+
     try {
       await updateUser({
         displayName: updateName,
@@ -56,14 +61,17 @@ const UpdateUserInfo = () => {
           <input
             className="text-white focus:outline-primary border placeholder-white border-gray-400 rounded py-2 px-3"
             placeholder="Photo URL"
-            type="text"
+            type="url"
             name="photoUrl"
             onChange={(e) => setPhotoUrl(e.target.value)}
             required
           />
         </div>
 
-        <button onClick={handleUpdate} className="btn mt-5 lg:w-70 text-[16px]">
+        <button
+          onClick={handleUpdate}
+          className="btn dark:bg-primary mt-5 lg:w-70 text-[16px]"
+        >
           Save Changes
         </button>
       </div>

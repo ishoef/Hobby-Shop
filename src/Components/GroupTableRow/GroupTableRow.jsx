@@ -5,8 +5,6 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 const GroupTableRow = ({ group, groups, setGroups }) => {
-
-
   // This function will be called when the delete button is clicked
   const handleDelete = () => {
     console.log(`Deleting group with ID: ${group._id}`);
@@ -21,9 +19,12 @@ const GroupTableRow = ({ group, groups, setGroups }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Send delete request to the server
-        fetch(`http://localhost:3000/groups/${group._id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups/${group._id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log("Delete response:", data);
@@ -31,8 +32,10 @@ const GroupTableRow = ({ group, groups, setGroups }) => {
               Swal.fire("Deleted!", "Your group has been deleted.", "success");
               // window.location.reload(); // Reload the page to reflect changes
 
-              const updatedgroups = groups.filter(groupItem => groupItem._id !== group._id);
-              setGroups(updatedgroups)
+              const updatedgroups = groups.filter(
+                (groupItem) => groupItem._id !== group._id
+              );
+              setGroups(updatedgroups);
             } else {
               Swal.fire("Error!", "Failed to delete the group.", "error");
             }

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 
 const Hero = () => {
   return (
-    <div className="flex flex-col-reverse md:flex-row justify-between items-center w-11/12 md:w-10/12 mx-auto bg-base-300 px-5 md:px-20 my-10 rounded-2xl">
+    <div className="flex flex-col-reverse md:flex-row justify-between items-center w-11/12 md:w-10/12 mx-auto bg-base-300 dark:bg-gray-800 px-5 md:px-20 my-10 rounded-2xl">
       <div className="left w-full flex flex-col gap-5 items-center md:items-start basis-4/5">
         <h1 className="text-5xl font-semibold text-center md:text-start">
           Discover Your Passion

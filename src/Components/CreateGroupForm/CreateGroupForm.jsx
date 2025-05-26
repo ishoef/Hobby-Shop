@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const CreateGroupForm = ({ user }) => {
-
   // Set the document title
   React.useEffect(() => {
     document.title = "Create Group | Hobby Shop";
@@ -31,22 +30,24 @@ const CreateGroupForm = ({ user }) => {
 
     console.log(formData);
 
-
     // send data to the server
-    fetch("http://localhost:3000/groups", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newGroup),
-    })
+    fetch(
+      "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(newGroup),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log("data after Post", data);
 
         // reset the form
         form.reset();
-        
+
         // show success alert
         Swal.fire("Success!", "Group created successfully.", "success");
         navigate("/mygroups", { state: data });
@@ -60,7 +61,7 @@ const CreateGroupForm = ({ user }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className=" max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4"
+      className=" max-w-xl mx-auto p-6 dark:text-gray-200 shadow-md rounded-lg space-y-4"
     >
       <h2 className="text-3xl text-primary font-semibold mb-4 text-center">
         Create New Group
@@ -70,13 +71,13 @@ const CreateGroupForm = ({ user }) => {
         type="text"
         name="groupName"
         placeholder="Group Name"
-        className="input input-bordered focus:border-primary focus:outline-primary w-full "
+        className="input input-bordered focus:border-primary focus:outline-none w-full "
         required
       />
 
       <select
         name="category"
-        className="select select-bordered w-full focus:border-primary focus:outline-primary"
+        className="select select-bordered w-full focus:border-primary focus:outline-none"
         required
         defaultValue=""
       >
@@ -96,7 +97,7 @@ const CreateGroupForm = ({ user }) => {
       <textarea
         name="description"
         placeholder="Description"
-        className="textarea textarea-bordered w-full focus:border-primary focus:outline-primary"
+        className="textarea textarea-bordered w-full focus:border-primary focus:outline-none"
         rows="4"
         required
       />
@@ -105,7 +106,7 @@ const CreateGroupForm = ({ user }) => {
         type="text"
         name="location"
         placeholder="Meeting Location"
-        className="input input-bordered w-full focus:border-primary focus:outline-primary"
+        className="input input-bordered w-full focus:border-primary focus:outline-none"
         required
       />
 
@@ -113,14 +114,14 @@ const CreateGroupForm = ({ user }) => {
         type="number"
         name="maxMembers"
         placeholder="Max Members"
-        className="input input-bordered w-full focus:border-primary focus:outline-primary"
+        className="input input-bordered w-full focus:border-primary focus:outline-none"
         required
       />
 
       <input
         type="date"
         name="startDate"
-        className="input input-bordered w-full focus:border-primary focus:outline-primary"
+        className="input input-bordered w-full focus:border-primary dark:focus:outline-0 focus:outline-none"
         required
       />
 
@@ -128,7 +129,7 @@ const CreateGroupForm = ({ user }) => {
         type="url"
         name="imageUrl"
         placeholder="Image URL"
-        className="input input-bordered w-full focus:border-primary focus:outline-primary"
+        className="input input-bordered w-full focus:border-primary focus:outline-none"
         required
       />
 
@@ -137,7 +138,7 @@ const CreateGroupForm = ({ user }) => {
         name="userName"
         value={user?.displayName || ""}
         readOnly
-        className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-primary"
+        className="input input-bordered w-full bg-gray-100 dark:bg-gray-900 focus:border-primary focus:outline-none"
       />
 
       <input
@@ -145,7 +146,7 @@ const CreateGroupForm = ({ user }) => {
         name="userEmail"
         value={user?.email || ""}
         readOnly
-        className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-primary"
+        className="input input-bordered w-full bg-gray-100 dark:bg-gray-900 focus:border-primary focus:outline-none"
       />
 
       <button

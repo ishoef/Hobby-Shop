@@ -12,7 +12,7 @@ const CreatedGroups = ({ groups, setGroups }) => {
       <div className="overflow-x-auto min-h-[calc(100vh-438px)]">
         <table className="table table-lg border border-[#FF6B3580] rounded-2xl">
           <thead>
-            <tr className="bg-primary text-white text-[18px]">
+            <tr className="bg-primary dark:bg-gray-800 text-white text-[18px]">
               <th>Image</th>
               <th>Group Name</th>
               <th>Category</th>

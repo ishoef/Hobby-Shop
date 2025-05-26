@@ -23,7 +23,9 @@ export const router = createBrowserRouter([
         path: "/",
         index: true,
         loader: () => {
-          return fetch("http://localhost:3000/groups");
+          return fetch(
+            "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups"
+          );
         },
         Component: Home,
       },
@@ -38,14 +40,18 @@ export const router = createBrowserRouter([
       {
         path: "/allgroups",
         loader: () => {
-          return fetch("http://localhost:3000/groups");
+          return fetch(
+            "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups"
+          );
         },
         Component: AllGroups,
       },
       {
         path: "/mygroups",
         loader: () => {
-          return fetch("http://localhost:3000/groups");
+          return fetch(
+            "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups"
+          );
         },
         element: (
           <PrivateRoute>
@@ -57,15 +63,19 @@ export const router = createBrowserRouter([
         path: "/groupDetails/:id",
         Component: GroupDetails,
         loader: () => {
-          return fetch("http://localhost:3000/groups");
-        }
+          return fetch(
+            "https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups"
+          );
+        },
       },
       {
         path: "/mygroups/update/:id",
         Component: UpdateGroupData,
         loader: ({ params }) => {
-          return fetch(`http://localhost:3000/groups/${params.id}`);
-        }
+          return fetch(
+            `https://hobby-shop-server-side-aazw9yse7-ismail-nayefs-projects.vercel.app/groups/${params.id}`
+          );
+        },
       },
       {
         path: "/myprofile",
