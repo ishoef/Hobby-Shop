@@ -3,7 +3,7 @@ import FeaturedGroups from "../../Components/FeaturedGroupes/FeaturedGroups";
 import Hero from "../../Components/Hero/Hero";
 import HowItWorks from "../../Components/HowItWorks/HowItWorks";
 import UserTestimonial from "../../Components/UserTestimonial/UserTestimonial";
-import { useLoaderData} from "react-router";
+import { useLoaderData } from "react-router";
 import Slider from "../../Components/Slider/Slider";
 import DateTimeDisplay from "../../Components/DateTimeDisplay/DateTimeDisplay";
 
@@ -16,12 +16,24 @@ const Home = () => {
 
   const groupsData = useLoaderData();
 
-  const sortedGroups = [...groupsData].sort(
-    (a, b) => new Date(b.startDate) - new Date(a.startDate)
+  const today = new Date();
+
+  // Step 1: Filter only upcoming groups (startDate > today)
+  const upcomingGroups = groupsData.filter(
+    (group) => new Date(group.startDate) > today
   );
 
-  const eightGroups = sortedGroups.slice(0, 8);
-  console.log("Featured Groups:", eightGroups);
+  // Step 2: Sort by soonest startDate (ascending)
+  const sortedUpcomingGroups = upcomingGroups.sort(
+    (a, b) => new Date(a.startDate) - new Date(b.startDate)
+  );
+
+  // Step 3: Take the first 8 upcoming groups
+  const eightGroups = sortedUpcomingGroups.slice(0, 6);
+
+  console.log("Upcoming Featured Groups:", eightGroups);
+
+  const className = "grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:w-10/12 mx-auto"; 
 
   return (
     <>
@@ -29,6 +41,7 @@ const Home = () => {
       <Slider></Slider>
       <div className="w-11/12 md:w-10/12  mx-auto mt-10 md:mt-20 mb-10">
         <FeaturedGroups
+          className={className}
           groupsData={eightGroups}
           showSeeAll={true}
           title={title}
