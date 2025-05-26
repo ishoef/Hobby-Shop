@@ -37,7 +37,6 @@ const Home = () => {
 
   return (
     <>
-      <DateTimeDisplay></DateTimeDisplay>
       <Slider></Slider>
       <div className="w-11/12 md:w-10/12  mx-auto mt-10 md:mt-20 mb-10">
         <FeaturedGroups
