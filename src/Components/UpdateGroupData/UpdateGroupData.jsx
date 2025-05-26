@@ -8,7 +8,6 @@ const UpdateGroupData = () => {
   const groupData = useLoaderData();
   const groupId = useParams();
   console.log("groupId", groupId);
-  console.log(groupData);
 
   // Set the document title
   React.useEffect(() => {
@@ -48,16 +47,15 @@ const UpdateGroupData = () => {
             title: "Success!",
             text: "Group updated successfully.",
             icon: "success",
-            confirmButtonText: "OK", // ensure the button is shown
-            allowOutsideClick: false, // prevent closing by clicking outside
+            confirmButtonText: "OK",
+            allowOutsideClick: false, 
           }).then((result) => {
             if (result.isConfirmed) {
-              // ✅ Redirect after clicking OK
-              window.location.href = "/mygroups"; // <-- change this route if needed
+              // Redirect after clicking OK
+              window.location.href = "/mygroups";
             }
           });
 
-          // If you're using form reset, make sure it's done before redirect or manage it in the next page
           form.reset();
         } else {
           Swal.fire("Error!", "Failed to update the group.", "error");

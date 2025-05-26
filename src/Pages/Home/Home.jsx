@@ -1,11 +1,9 @@
 import React from "react";
 import FeaturedGroups from "../../Components/FeaturedGroupes/FeaturedGroups";
-import Hero from "../../Components/Hero/Hero";
 import HowItWorks from "../../Components/HowItWorks/HowItWorks";
 import UserTestimonial from "../../Components/UserTestimonial/UserTestimonial";
 import { useLoaderData } from "react-router";
 import Slider from "../../Components/Slider/Slider";
-import DateTimeDisplay from "../../Components/DateTimeDisplay/DateTimeDisplay";
 
 const Home = () => {
   // Set the document title
@@ -30,8 +28,6 @@ const Home = () => {
 
   // Step 3: Take the first 8 upcoming groups
   const eightGroups = sortedUpcomingGroups.slice(0, 6);
-
-  console.log("Upcoming Featured Groups:", eightGroups);
 
   const className = "grid md:grid-cols-2 lg:grid-cols-3 gap-5 lg:w-10/12 mx-auto"; 
 

@@ -6,12 +6,21 @@ import Swal from "sweetalert2";
 const GroupDetails = () => {
   const { id } = useParams();
   const details = useLoaderData();
-  console.log("Group Details Data:", details);
+  
+  // Set the document title 
+  React.useEffect(() => {
+    document.title = "Group Details | Hobby Shop";
+  }, []);
+
+  // Find the group details by ID
   const group = details.find((group) => group._id === id);
+
+  // If group not found, display a message
   if (!group) {
     return <div className="text-center">Group not found</div>;
   }
 
+  // Destructure the group details
   const {
     _id,
     groupName,
@@ -25,7 +34,6 @@ const GroupDetails = () => {
     imageUrl,
   } = group;
 
-  console.log("Group ID:", id);
 
   // Function to handle joining the group
   const handleJoin = () => {
@@ -65,7 +73,7 @@ const GroupDetails = () => {
       }
     });
   };
-  
+
   return (
     <div className="w-11/12 md:w-10/12 mx-auto py-10">
       <div className="w-full lg:w-6/12 mx-auto">
