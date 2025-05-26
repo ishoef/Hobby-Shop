@@ -48,10 +48,13 @@ const UpdateGroupData = () => {
             title: "Success!",
             text: "Group updated successfully.",
             icon: "success",
-            timer: 800, // show for 2 seconds
-            showConfirmButton: true,
-          }).then(() => {
-            window.location.href = "/mygroups";
+            confirmButtonText: "OK", // ensure the button is shown
+            allowOutsideClick: false, // prevent closing by clicking outside
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // ✅ Redirect after clicking OK
+              window.location.href = "/mygroups"; // <-- change this route if needed
+            }
           });
 
           // If you're using form reset, make sure it's done before redirect or manage it in the next page
@@ -66,7 +69,7 @@ const UpdateGroupData = () => {
     <div className="py-10 md:py-20 w-11/12 md:w-10/12 mx-auto">
       <form
         onSubmit={handleUpdateGroup}
-        className="max-w-xl mx-auto p-6 bg-white shadow-md rounded-lg space-y-4"
+        className="max-w-xl mx-auto p-6 bg-white dark:bg-gray-800 shadow-md rounded-lg space-y-4"
       >
         <h2 className="text-3xl text-primary font-semibold mb-4 text-center">
           Update Group Data
@@ -149,7 +152,7 @@ const UpdateGroupData = () => {
           name="userName"
           value={user?.displayName || ""}
           readOnly
-          className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-none"
+          className="input input-bordered w-full bg-gray-100 dark:bg-gray-900 focus:border-primary focus:outline-none"
         />
 
         <input
@@ -157,7 +160,7 @@ const UpdateGroupData = () => {
           name="userEmail"
           value={user?.email || ""}
           readOnly
-          className="input input-bordered w-full bg-gray-100 focus:border-primary focus:outline-none"
+          className="input input-bordered w-full bg-gray-100 dark:bg-gray-900 focus:border-primary focus:outline-none"
         />
 
         <button
