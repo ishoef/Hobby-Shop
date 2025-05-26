@@ -15,7 +15,7 @@ const GroupCard = ({ group }) => {
       <div className="hover:scale-102 transition-all dark:text-gray-400 border border-gray-300 dark:border-gray-500 flex flex-col w-full rounded-xl shadow cursor-pointer pb-5">
         <div className="w-full">
           <img
-            className="w-full rounded-t-xl h-40 md:h-50 lg:h-60"
+            className="w-full rounded-t-xl h-50 md:h-50 lg:h-60"
             src={
               imageUrl ||
               "https://plus.unsplash.com/premium_photo-1669652639356-f5cb1a086976?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGJvb2tzfGVufDB8fDB8fHww"
