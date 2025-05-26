@@ -44,9 +44,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "/mygroups",
-        loader: () => {
-          return fetch("https://hobby-shop-server-side.vercel.app/groups");
-        },
         element: (
           <PrivateRoute>
             <MyGroupes></MyGroupes>

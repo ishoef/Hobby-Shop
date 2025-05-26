@@ -13,8 +13,10 @@ const Error = () => {
         <div className="flex flex-col gap-4 items-center">
           <LuFileX2 color="#FF6B35" size={100} />
           <h1 className="text-3xl text-center">
-            <span className="text-primary font-semibold">Ooops!</span> The page
-            you are looking for doesn't exist
+            <span className="text-primary font-semibold">
+              Ooops!
+            </span>{" "}
+            The page you are looking for doesn't exist
           </h1>
           <p className="text-center">
             it seems like the page you are trying to access is either removed or
