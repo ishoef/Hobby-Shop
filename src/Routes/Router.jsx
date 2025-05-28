@@ -37,9 +37,6 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allgroups",
-        loader: () => {
-          return fetch("https://hobby-shop-server-side.vercel.app/groups");
-        },
         Component: AllGroups,
       },
       {

@@ -1,15 +1,13 @@
 import React from "react";
 import FeaturedGroups from "../../Components/FeaturedGroupes/FeaturedGroups";
-import { useLoaderData } from "react-router";
+import ItemsLoader from "../../Components/Loader/ItemsLoader";
 
 const AllGroups = () => {
+
   // Set the document title
   React.useEffect(() => {
-    document.title = "Explore Groups | Hobby Shop";
+    document.title = "All Groups | Hobby Shop";
   }, []);
-
-  // Fetch groups data from the server
-  const groupsData = useLoaderData();
 
   const className = "grid md:grid-cols-3 lg:grid-cols-4 gap-5";
 
@@ -19,9 +17,9 @@ const AllGroups = () => {
       <h1 className="title text-center">Explore All Groups</h1>
       <div className="min-h-[calc(100vh-477px)]">
         <FeaturedGroups
+          loderClass={className}
           className={className}
           showSeeAll={false}
-          groupsData={groupsData}
         ></FeaturedGroups>
       </div>
     </div>

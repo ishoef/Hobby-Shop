@@ -6,6 +6,7 @@ import PreLoader from "../Components/Loader/PreLoader/PreLoader";
 
 const MainLayout = () => {
   const [loading, setLoading] = useState(true);
+  const className = "flex justify-center items-center min-h-screen";
 
   useEffect(() => {
     // Simulate a loading delay
@@ -18,7 +19,7 @@ const MainLayout = () => {
   }, []);
 
   if (loading) {
-    return <PreLoader></PreLoader>
+    return <PreLoader className={className}></PreLoader>;
   }
 
   return (

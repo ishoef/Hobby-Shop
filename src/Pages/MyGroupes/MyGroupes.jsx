@@ -9,6 +9,8 @@ const MyGroupes = () => {
   const { user } = useContext(AuthContext);
   const [groups, setGroups] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const className = 'flex justify-center items-center min-h-screen md:min-h-[calc(100vh-300px)]'
   // Set the document title
   useEffect(() => {
     document.title = "My Groups | Hobby Shop";
@@ -38,7 +40,7 @@ const MyGroupes = () => {
 
   if (loading) {
     // return <NormalLoader></NormalLoader>
-    return <PreLoader></PreLoader>
+    return <PreLoader className={className}></PreLoader>;
   }
 
   if (!groups || groups.length === 0) {

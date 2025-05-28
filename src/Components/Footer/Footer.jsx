@@ -10,7 +10,8 @@ const Footer = () => {
           <Logo></Logo>
           <p>
             Hobby Shop Ltd
-            <br /> Hobby Shop is a platform where you can create and join groups based on your interests and hobbies.   
+            <br /> Hobby Shop is a platform where you can create and join groups
+            based on your interests and hobbies.
           </p>
           <ul className="flex gap-4 mt-5">
             <Link to="https://www.facebook.com/profile.php" target="_blank">
@@ -48,6 +49,15 @@ const Footer = () => {
             <button className="btn btn-primary">Subscribe</button>
           </div>
         </div>
+      </footer>
+      <hr className="w-11/12 lg:w-10/12 mx-auto"></hr>
+      <footer className="footer sm:footer-horizontal footer-center bg-base-300 text-base-content p-4">
+        <aside>
+          <p>
+            Copyright © {new Date().getFullYear()} Designed by{" "}
+            {"Ismail Hossan Nayef"}
+          </p>
+        </aside>
       </footer>
     </section>
   );
