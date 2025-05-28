@@ -3,6 +3,7 @@ import CreatedGroups from "../../Components/CreatedGroups/CreatedGroups";
 import NoCreatedGroups from "../../Components/NoCreatedGroups/NoCreatedGroups";
 import { AuthContext } from "../../Context/AuthProvider";
 import NormalLoader from "../../Components/Loader/NormalLoader";
+import PreLoader from "../../Components/Loader/PreLoader/PreLoader";
 
 const MyGroupes = () => {
   const { user } = useContext(AuthContext);
@@ -36,7 +37,8 @@ const MyGroupes = () => {
   }, [user]);
 
   if (loading) {
-    return <NormalLoader></NormalLoader>
+    // return <NormalLoader></NormalLoader>
+    return <PreLoader></PreLoader>
   }
 
   if (!groups || groups.length === 0) {

@@ -1,18 +1,35 @@
-import React from 'react';
-import { Outlet } from 'react-router';
-import Header from '../Components/Header/Header';
-import Footer from '../Components/Footer/Footer';
+import React, { useEffect, useState } from "react";
+import { Outlet } from "react-router";
+import Header from "../Components/Header/Header";
+import Footer from "../Components/Footer/Footer";
+import PreLoader from "../Components/Loader/PreLoader/PreLoader";
 
 const MainLayout = () => {
-    return (
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate a loading delay
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000); // Adjust the delay as needed
+
+    // Cleanup the timer on component unmount
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <PreLoader></PreLoader>
+  }
+
+  return (
+    <div>
+      <Header></Header>
       <div>
-        <Header></Header>
-        <div>
-          <Outlet></Outlet>
-        </div>
-        <Footer></Footer>
+        <Outlet></Outlet>
       </div>
-    );
+      <Footer></Footer>
+    </div>
+  );
 };
 
 export default MainLayout;
