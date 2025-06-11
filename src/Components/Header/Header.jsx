@@ -4,7 +4,6 @@ import Swal from "sweetalert2";
 import { TiThMenu } from "react-icons/ti";
 import { AuthContext } from "../../Context/AuthProvider";
 import Logo from "../Logo/Logo";
-import { CiDark } from "react-icons/ci";
 import DarkModeToggle from "../DarkModeToggle/DarkModeToggle";
 
 const Header = () => {

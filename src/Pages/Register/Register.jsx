@@ -26,11 +26,15 @@ const Register = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
 
+
+    // error Code 
     const hasUppercase = /[A-Z]/.test(password);
     const hasLowercase = /[a-z]/.test(password);
     // const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
     const hasMinLength = password.length >= 6;
 
+
+    // Error Messages
     const errorMessages = {
       hasUppercase: "Password must contain at least one uppercase letter.",
       hasLowercase: "Password must contain at least one lowercase letter.",
@@ -38,27 +42,38 @@ const Register = () => {
       hasMinLength: "Password must be at least 6 characters long.",
     };
 
+
+    // Error Checkes
+
+    // Uppercase Requird Check
     if (!hasUppercase) {
       toast.error(errorMessages.hasUppercase);
       setShowError(errorMessages.hasUppercase);
       return;
     }
+
+    // Lowercase Requird check
     if (!hasLowercase) {
       toast.error(errorMessages.hasLowercase);
       setShowError(errorMessages.hasLowercase);
       return;
     }
+
+    // Special Charecter Check
     // if (!hasSpecialChar) {
     //   toast.error(errorMessages.hasSpecialChar);
     //   setShowError(errorMessages.hasSpecialChar);
     //   return;
     // }
+
+    // Password Length Check
     if (!hasMinLength) {
       toast.error(errorMessages.hasMinLength);
       setShowError(errorMessages.hasMinLength);
       return;
     }
 
+    // Creating User
     createUser(email, password)
       .then((result) => {
         const user = result.user;

@@ -5,6 +5,7 @@ import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 const GroupTableRow = ({ group, groups, setGroups }) => {
+  
   // This function will be called when the delete button is clicked
   const handleDelete = () => {
     console.log(`Deleting group with ID: ${group._id}`);
